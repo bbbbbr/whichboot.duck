@@ -119,9 +119,16 @@ ENTRY::
 .acc_error_nomath
 
 	; Turn off LCD.
-	ldh	A,[rLCDC]
-	add	A
-	jr	nc,.alreadyoff
+    if def(TARGET_MEGADUCK)
+        ; This bit is the same on Duck, but easier to read this way
+        ldh A,[rLCDC]
+        bit LCDCF_B_ON, A
+        jr z, .alreadyoff
+    else
+    	ldh	A,[rLCDC]
+    	add	A
+    	jr	nc,.alreadyoff
+    endc
 .waitvbl
 	ldh	A,[rLY]
 	cp	$90
@@ -387,7 +394,7 @@ ENTRY::
 	ldh	[rOBP1],A
 
 	; Enable LCD.
-	ld	A,$91
+    ld A, (LCDCF_ON | LCDCF_BG8000 | LCDCF_BGON) ; $91
 	ld	[rLCDC],A
 
 	xor	A
