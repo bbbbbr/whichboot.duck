@@ -1,3 +1,8 @@
+# whichboot.duck
+Very minor fork of Nitro2k's [Whichboot.gb](https://github.com/nitro2k01/whichboot.gb)  to run on the MegaDuck
+
+# Original Readme Below
+------
 # whichboot.gb
 
 ![Whichboot.gb running on a DMG Gameboy](screenshots/whichboot-dmg.png) ![Whichboot.gb running on a GBC Gameboy with the older GBC0 boot ROM](screenshots/whichboot-gbc0.png)
